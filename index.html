@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#00eeff">
+	<title>teste theme-color</title>
+</head>
+<body>
+	<div id="corAtual" style="background-color: red; height: 50vh;"></div>
+	<div style="width: 100vw; display: flex; justify-content: end;">
+		<button onclick="mudarCorAtual()" style="margin-bottom: 20px; margin-right: 15px; margin-top: 50px; padding: 20px;">
+			mudar cor
+		</button>
+	</div>
+
+	<script>
+		const corAtual = document.getElementById("corAtual");
+
+		function mudarCorAtual() {
+			const cor = corAtual.style.backgroundColor;
+
+			if (cor === "blue") {
+				corAtual.style.backgroundColor = "red";
+			} else {
+				corAtual.style.backgroundColor = "blue";
+			}
+
+			const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+			if (metaThemeColor) {
+				if (corAtual.style.backgroundColor === "blue") {
+					metaThemeColor.setAttribute("content", "#0000FF");  
+				} else {
+					metaThemeColor.setAttribute("content", "#FF0000"); 
+				}
+			}
+		}
+	</script>
+</body>
+</html>
